@@ -1,0 +1,19 @@
+build/
+results/*
+!results/reference/
+__pycache__/
+*.pyc
+
+# Build outputs
+/build/
+**/build/
+/build-*/
+/build_*/
+/cmake-build-*/
+
+# Profiler report files
+*-rep
+*.rep
+*.nsys-rep
+*.ncu-rep
+.DS_Store

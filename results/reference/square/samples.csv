@@ -1,0 +1,91 @@
+variant,trial,kernel,time_us,kernels,dram_read_bytes
+0,0,gemm_base_kernel,3672.48,1,4519424.0
+0,1,gemm_base_kernel,3672.064,1,4382976.0
+0,2,gemm_base_kernel,3673.056,1,4973568.0
+0,3,gemm_base_kernel,3671.84,1,4194816.0
+0,4,gemm_base_kernel,3671.552,1,4227328.0
+0,5,gemm_base_kernel,3671.648,1,4719360.0
+0,6,gemm_base_kernel,3672.8,1,4551424.0
+0,7,gemm_base_kernel,3672.192,1,4194560.0
+0,8,gemm_base_kernel,3671.168,1,4193792.0
+1,0,gemm_smem_kernel,2876.48,1,4198912.0
+1,1,gemm_smem_kernel,2873.76,1,4548096.0
+1,2,gemm_smem_kernel,2874.304,1,4193792.0
+1,3,gemm_smem_kernel,2870.944,1,4304896.0
+1,4,gemm_smem_kernel,2871.968,1,4219136.0
+1,5,gemm_smem_kernel,2865.408,1,4194304.0
+1,6,gemm_smem_kernel,2867.552,1,4336128.0
+1,7,gemm_smem_kernel,2869.728,1,4615424.0
+1,8,gemm_smem_kernel,2867.456,1,4280576.0
+2,0,gemm_smem_reg_kernel,1009.12,1,4201728.0
+2,1,gemm_smem_reg_kernel,1009.8240000000001,1,4227328.0
+2,2,gemm_smem_reg_kernel,1009.568,1,4194048.0
+2,3,gemm_smem_reg_kernel,1009.952,1,4194304.0
+2,4,gemm_smem_reg_kernel,1011.36,1,4303104.0
+2,5,gemm_smem_reg_kernel,1010.784,1,4269056.0
+2,6,gemm_smem_reg_kernel,1011.008,1,4194560.0
+2,7,gemm_smem_reg_kernel,1010.048,1,4194816.0
+2,8,gemm_smem_reg_kernel,1010.6560000000001,1,4194816.0
+3,0,gemm_smem_reg_half2_kernel,879.264,1,4203520.0
+3,1,gemm_smem_reg_half2_kernel,878.88,1,4194304.0
+3,2,gemm_smem_reg_half2_kernel,880.096,1,4307712.0
+3,3,gemm_smem_reg_half2_kernel,875.712,1,4194560.0
+3,4,gemm_smem_reg_half2_kernel,876.384,1,4194304.0
+3,5,gemm_smem_reg_half2_kernel,879.072,1,4194560.0
+3,6,gemm_smem_reg_half2_kernel,878.368,1,4194560.0
+3,7,gemm_smem_reg_half2_kernel,877.152,1,4221184.0
+3,8,gemm_smem_reg_half2_kernel,876.384,1,4606208.0
+4,0,gemm_wmma_smem_kernel,1117.3120000000001,1,4201984.0
+4,1,gemm_wmma_smem_kernel,1112.544,1,4465152.0
+4,2,gemm_wmma_smem_kernel,1107.5520000000001,1,4194560.0
+4,3,gemm_wmma_smem_kernel,1113.6000000000001,1,4282624.0
+4,4,gemm_wmma_smem_kernel,1044.992,1,4194304.0
+4,5,gemm_wmma_smem_kernel,1045.568,1,4194560.0
+4,6,gemm_wmma_smem_kernel,1048.832,1,4198144.0
+4,7,gemm_wmma_smem_kernel,1046.112,1,4194560.0
+4,8,gemm_wmma_smem_kernel,1044.032,1,4194304.0
+5,0,gemm_wmma_gmem_kernel,495.264,1,4299776.0
+5,1,gemm_wmma_gmem_kernel,496.35200000000003,1,4249344.0
+5,2,gemm_wmma_gmem_kernel,496.544,1,4291584.0
+5,3,gemm_wmma_gmem_kernel,495.808,1,4202496.0
+5,4,gemm_wmma_gmem_kernel,499.264,1,4194816.0
+5,5,gemm_wmma_gmem_kernel,498.368,1,4260096.0
+5,6,gemm_wmma_gmem_kernel,498.336,1,4194560.0
+5,7,gemm_wmma_gmem_kernel,496.672,1,4280064.0
+5,8,gemm_wmma_gmem_kernel,498.752,1,4194304.0
+6,0,gemm_wmma_pipeline_kernel<3>,124.224,1,4206080.0
+6,1,gemm_wmma_pipeline_kernel<3>,125.952,1,4194560.0
+6,2,gemm_wmma_pipeline_kernel<3>,124.64,1,4194304.0
+6,3,gemm_wmma_pipeline_kernel<3>,125.85600000000001,1,4194304.0
+6,4,gemm_wmma_pipeline_kernel<3>,126.208,1,4194304.0
+6,5,gemm_wmma_pipeline_kernel<3>,127.68,1,4194560.0
+6,6,gemm_wmma_pipeline_kernel<3>,129.568,1,4194304.0
+6,7,gemm_wmma_pipeline_kernel<3>,131.68,1,4194048.0
+6,8,gemm_wmma_pipeline_kernel<3>,125.888,1,4194816.0
+7,0,gemm_wmma_swizzle_kernel<3>,95.488,1,4237568.0
+7,1,gemm_wmma_swizzle_kernel<3>,94.848,1,4194560.0
+7,2,gemm_wmma_swizzle_kernel<3>,96.0,1,4194304.0
+7,3,gemm_wmma_swizzle_kernel<3>,95.328,1,4194816.0
+7,4,gemm_wmma_swizzle_kernel<3>,96.224,1,4194304.0
+7,5,gemm_wmma_swizzle_kernel<3>,95.36,1,4194816.0
+7,6,gemm_wmma_swizzle_kernel<3>,95.968,1,4194560.0
+7,7,gemm_wmma_swizzle_kernel<3>,95.552,1,4194560.0
+7,8,gemm_wmma_swizzle_kernel<3>,96.384,1,4194048.0
+8,0,cuBLAS (gemm_cublas),86.88,1,4223488.0
+8,1,cuBLAS (gemm_cublas),88.48,1,4194304.0
+8,2,cuBLAS (gemm_cublas),86.56,1,4194560.0
+8,3,cuBLAS (gemm_cublas),88.57600000000001,1,4194816.0
+8,4,cuBLAS (gemm_cublas),87.008,1,4194560.0
+8,5,cuBLAS (gemm_cublas),87.52,1,4198656.0
+8,6,cuBLAS (gemm_cublas),86.912,1,4194560.0
+8,7,cuBLAS (gemm_cublas),87.776,1,4194816.0
+8,8,cuBLAS (gemm_cublas),87.168,1,4194304.0
+9,0,"gemm_mma_llm_kernel<64, 128, 3, 32>",97.21600000000001,1,4208128.0
+9,1,"gemm_mma_llm_kernel<64, 128, 3, 32>",96.736,1,4194816.0
+9,2,"gemm_mma_llm_kernel<64, 128, 3, 32>",97.248,1,4194560.0
+9,3,"gemm_mma_llm_kernel<64, 128, 3, 32>",97.056,1,4274688.0
+9,4,"gemm_mma_llm_kernel<64, 128, 3, 32>",97.792,1,4239104.0
+9,5,"gemm_mma_llm_kernel<64, 128, 3, 32>",96.96000000000001,1,4203264.0
+9,6,"gemm_mma_llm_kernel<64, 128, 3, 32>",97.34400000000001,1,4194560.0
+9,7,"gemm_mma_llm_kernel<64, 128, 3, 32>",96.64,1,4195328.0
+9,8,"gemm_mma_llm_kernel<64, 128, 3, 32>",98.432,1,4255232.0

@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "current": "results/reference/warm",
+  "progressive_square": "results/reference/square",
+  "cold_suites": [
+    "qkv",
+    "opt_m1",
+    "opt_m32",
+    "opt_prefill",
+    "opt_down"
+  ],
+  "datasets": {
+    "warm": "Ordinary-launch warm samples and selected-kernel launch trace",
+    "cold_matrix": "Cold final comparisons and M=8 progressive samples",
+    "m32": "Combined M=32 progressive raw export",
+    "square": "Current ten-kernel 1024-cubed progressive comparison",
+    "analysis": "Counter export backing the memory-traffic explanation"
+  },
+  "files": {
+    "analysis/final-counters.manifest.json": {
+      "sha256": "0fc57d78fc92d1b22a5d1cecaef4fe8205b4a65700e53be73732704c806dc547",
+      "size": 15749
+    },
+    "analysis/final-counters.named.csv": {
+      "sha256": "8dbc215dd40cac370757aee54f172e344044698dc84e4efc697b5ff1f226249e",
+      "size": 445465
+    },
+    "cold_matrix/kernels.csv": {
+      "sha256": "1e5512f0f355a0a28bfb282da819f23b910905354c3cd6e70e0e77691802851d",
+      "size": 65464
+    },
+    "cold_matrix/metadata.json": {
+      "sha256": "bdf54a4e541dd30201143cf65c25f0e50bc788e5a039267105cc34f2587133ba",
+      "size": 2375
+    },
+    "cold_matrix/opt_down.raw.csv": {
+      "sha256": "a6b30136ced8204cbb45e1024ed20fb05e2e676e86aa8ac6bc1ef94fdae35f1e",
+      "size": 51641
+    },
+    "cold_matrix/opt_m1.raw.csv": {
+      "sha256": "f3f7b688875dd05124b7402eca24300060e341189fb2ee45af14ac5e24ee7408",
+      "size": 75223
+    },
+    "cold_matrix/opt_m32.raw.csv": {
+      "sha256": "87b8876a7ceb0c365c89e388c1a905188447db43680a12b14e5f2aa0de8b0b90",
+      "size": 51455
+    },
+    "cold_matrix/opt_prefill.raw.csv": {
+      "sha256": "02a18e45b0e7d06cb0cc1c3e64c7dffd3d15a8c6f0ebd6ab10835084d94a546b",
+      "size": 51698
+    },
+    "cold_matrix/samples.csv": {
+      "sha256": "d3b51c3781b7af89499a62d652e935c2126da4c1d4d0fe98b81f2ce3fba04d77",
+      "size": 9896
+    },
+    "cold_matrix/summary.json": {
+      "sha256": "1a98f64ebe417f4aee8c8a9f223379713a868f4dd9d710ed410df328f29b0d7f",
+      "size": 7690
+    },
+    "m32/all_setups.raw.csv": {
+      "sha256": "f2c035648b682e4e10c531c1df6607c2832fa32855aab0517c53c9ee093a7f97",
+      "size": 399886
+    },
+    "warm/samples.csv": {
+      "sha256": "32aa00505db69c5d9f33860fbd1e5c3a4807fc83d82d5f39ea59b1b87df2b213",
+      "size": 6529
+    },
+    "warm/summary.json": {
+      "sha256": "9bd2e24915f5428c46fb7006a9e8cb5e082e692fd32cbc7c4622f98ce06774ce",
+      "size": 1143
+    },
+    "warm/method.json": {
+      "sha256": "879296edd5c16df23bbbf75e041bf575acac4bedff773118d2863dd7dbb3880c",
+      "size": 185
+    },
+    "warm/environment.json": {
+      "sha256": "6dca6835cc53609db201d1e809fdb4537afcbb6ad9b8bd6cce4346bac56cbf46",
+      "size": 482
+    },
+    "warm/launches.log": {
+      "sha256": "3299b6f73e629b780be1509b43b55a7fc4bdc44c8e3726b28a9c0eb76e19b63d",
+      "size": 21346
+    },
+    "square/square.raw.csv": {
+      "sha256": "2caa71aa6c94eba489180fb8bf0c9d09e213d5b7ae3080ee9240d916732e60a0",
+      "size": 201664
+    },
+    "square/samples.csv": {
+      "sha256": "69e9e084a36fef151af19ce86c3624159642e0b744ec418bfccb7d804025e734",
+      "size": 4587
+    },
+    "square/kernels.csv": {
+      "sha256": "6b79bd3d3c26896565d4f30c57e93c3bb5562524e1567410798e4c1383950dcd",
+      "size": 16226
+    },
+    "square/summary.json": {
+      "sha256": "f82daa410eed12061988844f11a075b926badc88d4ddb64bd1b0ac9db539e966",
+      "size": 3148
+    },
+    "square/variants.json": {
+      "sha256": "09051c88842edc60425f2eb4b9aca5fe24d7566d3ff19be3aba82c44d55f2084",
+      "size": 1607
+    },
+    "square/metadata.json": {
+      "sha256": "2edb14b33fb976b830721243effcf007cb5792925f40fa7640d0ec2b5b0fe69b",
+      "size": 4129
+    },
+    "square/correctness.json": {
+      "sha256": "654999e7613db0e185caf80ec06e395c0c8e4f03a692428f73541beb239142fe",
+      "size": 1964
+    },
+    "square/telemetry.csv": {
+      "sha256": "cace328ac3ff4f751ea21391133cefd5a3f1efc6c9e13087a8a6617b600cf391",
+      "size": 446
+    }
+  }
+}

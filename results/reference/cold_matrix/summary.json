@@ -1,0 +1,338 @@
+{
+  "qkv": {
+    "gemm_base_kernel": {
+      "median_us": 818.112,
+      "q1_us": 815.7760000000001,
+      "q3_us": 819.76,
+      "min_us": 814.624,
+      "max_us": 824.928,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 3.22233425762541
+    },
+    "gemm_smem_kernel": {
+      "median_us": 2438.368,
+      "q1_us": 2422.992,
+      "q3_us": 2440.096,
+      "min_us": 2422.304,
+      "max_us": 2440.4159999999997,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 9.6041088984119
+    },
+    "gemm_smem_reg_kernel": {
+      "median_us": 799.616,
+      "q1_us": 798.0160000000001,
+      "q3_us": 800.512,
+      "min_us": 797.952,
+      "max_us": 800.96,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 3.1494832367027983
+    },
+    "gemm_smem_reg_half2_kernel": {
+      "median_us": 721.216,
+      "q1_us": 717.248,
+      "q3_us": 723.264,
+      "min_us": 714.8480000000001,
+      "max_us": 730.9440000000001,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 2.840685656667507
+    },
+    "gemm_wmma_gmem_kernel": {
+      "median_us": 247.10399999999998,
+      "q1_us": 235.856,
+      "q3_us": 252.432,
+      "min_us": 234.656,
+      "max_us": 252.86399999999998,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.9732795563398035
+    },
+    "gemm_wmma_smem_kernel": {
+      "median_us": 515.744,
+      "q1_us": 492.81600000000003,
+      "q3_us": 516.656,
+      "min_us": 491.52000000000004,
+      "max_us": 517.184,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 2.0313839173178727
+    },
+    "gemm_wmma_pipeline_kernel<3>": {
+      "median_us": 210.91199999999998,
+      "q1_us": 199.472,
+      "q3_us": 211.45600000000002,
+      "min_us": 184.32000000000002,
+      "max_us": 211.552,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.8307285102092261
+    },
+    "gemm_mma_swizzle_kernel<3>": {
+      "median_us": 215.136,
+      "q1_us": 186.064,
+      "q3_us": 216.03199999999998,
+      "min_us": 170.72,
+      "max_us": 218.17600000000002,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.8473657675825561
+    },
+    "cublas": {
+      "median_us": 253.88799999999998,
+      "q1_us": 226.49599999999998,
+      "q3_us": 254.54399999999998,
+      "min_us": 224.96,
+      "max_us": 255.936,
+      "samples": 9,
+      "kernels_per_call": [
+        2
+      ],
+      "time_over_cublas": 1.0
+    },
+    "optimized": {
+      "median_us": 182.144,
+      "q1_us": 143.968,
+      "q3_us": 182.832,
+      "min_us": 143.488,
+      "max_us": 184.576,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.7174187043105622
+    }
+  },
+  "square1024": {
+    "gemm_base_kernel": {
+      "median_us": 3672.1279999999997,
+      "q1_us": 3671.328,
+      "q3_us": 3672.5119999999997,
+      "min_us": 3670.656,
+      "max_us": 3673.536,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 42.3290298782737
+    },
+    "gemm_smem_kernel": {
+      "median_us": 2871.52,
+      "q1_us": 2865.984,
+      "q3_us": 2872.3680000000004,
+      "min_us": 2864.128,
+      "max_us": 2873.664,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 33.100331980818886
+    },
+    "gemm_smem_reg_kernel": {
+      "median_us": 1009.92,
+      "q1_us": 1009.552,
+      "q3_us": 1010.4,
+      "min_us": 1008.1279999999999,
+      "max_us": 1010.8159999999999,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 11.641460715603099
+    },
+    "gemm_smem_reg_half2_kernel": {
+      "median_us": 877.184,
+      "q1_us": 875.824,
+      "q3_us": 878.752,
+      "min_us": 875.648,
+      "max_us": 880.128,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 10.111398008115087
+    },
+    "gemm_wmma_gmem_kernel": {
+      "median_us": 494.784,
+      "q1_us": 494.256,
+      "q3_us": 496.528,
+      "min_us": 493.184,
+      "max_us": 497.376,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 5.703430468461822
+    },
+    "gemm_wmma_smem_kernel": {
+      "median_us": 1111.776,
+      "q1_us": 1047.664,
+      "q3_us": 1115.248,
+      "min_us": 1045.408,
+      "max_us": 1123.616,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 12.81556621172999
+    },
+    "gemm_wmma_pipeline_kernel<3>": {
+      "median_us": 124.416,
+      "q1_us": 121.952,
+      "q3_us": 125.80799999999999,
+      "min_us": 120.928,
+      "max_us": 129.056,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.434157137587606
+    },
+    "gemm_mma_swizzle_kernel<3>": {
+      "median_us": 95.136,
+      "q1_us": 94.432,
+      "q3_us": 95.456,
+      "min_us": 94.144,
+      "max_us": 95.904,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0966433050534858
+    },
+    "cublas": {
+      "median_us": 86.752,
+      "q1_us": 86.03200000000001,
+      "q3_us": 87.12,
+      "min_us": 85.824,
+      "max_us": 87.36,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0
+    }
+  },
+  "opt_m1": {
+    "optimized": {
+      "median_us": 189.312,
+      "q1_us": 188.416,
+      "q3_us": 190.38400000000001,
+      "min_us": 188.032,
+      "max_us": 190.72,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.9216388845614583
+    },
+    "cublas": {
+      "median_us": 205.408,
+      "q1_us": 205.088,
+      "q3_us": 205.712,
+      "min_us": 204.416,
+      "max_us": 206.624,
+      "samples": 9,
+      "kernels_per_call": [
+        2
+      ],
+      "time_over_cublas": 1.0
+    }
+  },
+  "opt_m32": {
+    "optimized": {
+      "median_us": 185.792,
+      "q1_us": 185.12,
+      "q3_us": 186.43200000000002,
+      "min_us": 183.488,
+      "max_us": 187.104,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 0.9366026778512664
+    },
+    "cublas": {
+      "median_us": 198.368,
+      "q1_us": 197.92000000000002,
+      "q3_us": 199.168,
+      "min_us": 197.44,
+      "max_us": 199.392,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0
+    }
+  },
+  "opt_prefill": {
+    "optimized": {
+      "median_us": 3406.1119999999996,
+      "q1_us": 3405.776,
+      "q3_us": 3406.9759999999997,
+      "min_us": 3405.6000000000004,
+      "max_us": 3407.552,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0952297656040992
+    },
+    "cublas": {
+      "median_us": 3109.9519999999998,
+      "q1_us": 3109.056,
+      "q3_us": 3112.128,
+      "min_us": 3107.136,
+      "max_us": 3112.992,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0
+    }
+  },
+  "opt_down": {
+    "optimized": {
+      "median_us": 7808.032,
+      "q1_us": 7806.032,
+      "q3_us": 7810.688,
+      "min_us": 7804.288,
+      "max_us": 7811.84,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.1039370577483396
+    },
+    "cublas": {
+      "median_us": 7072.896,
+      "q1_us": 7069.232,
+      "q3_us": 7084.832,
+      "min_us": 7067.168,
+      "max_us": 7495.968000000001,
+      "samples": 9,
+      "kernels_per_call": [
+        1
+      ],
+      "time_over_cublas": 1.0
+    }
+  }
+}

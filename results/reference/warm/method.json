@@ -1,0 +1,8 @@
+{
+  "timing": "CUDA events; one ordinary default-stream GEMM per sample",
+  "warmups": 20,
+  "trials": 11,
+  "cache": "reused inputs; no explicit eviction",
+  "alpha": 1,
+  "beta": 0
+}

@@ -1,0 +1,91 @@
+variant,trial,kernel,time_us,dram_read_bytes,dram_hz,sm_hz
+0,0,"square-v00-t00/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3672.48,4519424.0,8992915958.7,1873449276.78
+1,0,"square-v01-t00/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2876.48,4198912.0,8992857937.48,1873942457.45
+2,0,"square-v02-t00/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1009.12,4201728.0,8992674805.77,1868367488.5
+3,0,"square-v03-t00/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",879.264,4203520.0,8992248062.02,1869765508.43
+4,0,"square-v04-t00/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1117.3120000000001,4201984.0,8992782678.43,1872831850.01
+5,0,"square-v05-t00/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",495.264,4299776.0,8992440395.43,1863274940.23
+6,0,"square-v06-t00/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",124.224,4206080.0,8987120041.22,1705568167.18
+7,0,"square-v07-t00/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",95.488,4237568.0,8986595174.26,1683886980.56
+8,0,square-v08-t00/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),86.88,4223488.0,8993001841.62,1687459714.55
+9,0,"square-v09-t00/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",97.21600000000001,4208128.0,8992758393.68,1738751851.55
+1,1,"square-v01-t01/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2873.76,4548096.0,8992728689.94,1874014531.48
+2,1,"square-v02-t01/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1009.8240000000001,4227328.0,8991982761.35,1867252115.22
+3,1,"square-v03-t01/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",878.88,4194304.0,8992390314.95,1869408224.1
+4,1,"square-v04-t01/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1112.544,4465152.0,8992895561.88,1872840984.27
+5,1,"square-v05-t01/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",496.35200000000003,4249344.0,8992843788.28,1861334295.02
+6,1,"square-v06-t01/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",125.952,4194560.0,8987804878.05,1721147738.82
+7,1,"square-v07-t01/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",94.848,4194560.0,8987854251.01,1684205254.72
+8,1,square-v08-t01/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),88.48,4194304.0,8989511754.07,1694608951.18
+9,1,"square-v09-t01/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",96.736,4194816.0,8989745286.14,1724595807.15
+0,1,"square-v00-t01/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3672.064,4382976.0,8993028443.95,1872937127.46
+2,2,"square-v02-t02/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1009.568,4194048.0,8992487876.0,1869035072.43
+3,2,"square-v03-t02/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",880.096,4307712.0,8992764425.7,1866504904.01
+4,2,"square-v04-t02/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1107.5520000000001,4194560.0,8992516829.91,1872600564.13
+5,2,"square-v05-t02/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",496.544,4291584.0,8992459882.71,1860106053.04
+6,2,"square-v06-t02/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",124.64,4194304.0,8992041078.31,1710815147.63
+7,2,"square-v07-t02/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",96.0,4194304.0,8984000000.0,1685291666.67
+8,2,square-v08-t02/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),86.56,4194560.0,8984842883.55,1702888170.06
+9,2,"square-v09-t02/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",97.248,4194560.0,8987166831.19,1735830042.78
+0,2,"square-v00-t02/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3673.056,4973568.0,8992829948.69,1873041821.31
+1,2,"square-v01-t02/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2874.304,4193792.0,8992718933.0,1874179105.62
+3,3,"square-v03-t03/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",875.712,4194560.0,8992472411.02,1870793708.43
+4,3,"square-v04-t03/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1113.6000000000001,4282624.0,8992643678.16,1873008261.49
+5,3,"square-v05-t03/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",495.808,4202496.0,8992384148.7,1860295719.31
+6,3,"square-v06-t03/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",125.85600000000001,4194304.0,11785405542.84,1697193618.1
+7,3,"square-v07-t03/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",95.328,4194816.0,11783820073.85,1673065626.05
+8,3,square-v08-t03/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),88.57600000000001,4194816.0,11783236994.22,1663170610.55
+9,3,"square-v09-t03/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",97.056,4274688.0,11787668974.61,1713866221.56
+0,3,"square-v00-t03/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3671.84,4194816.0,11790038781.65,1873206485.03
+1,3,"square-v01-t03/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2870.944,4304896.0,11789961768.67,1874036727.99
+2,3,"square-v02-t03/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1009.952,4194304.0,11789740502.52,1867184282.03
+4,4,"square-v04-t04/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1044.992,4194304.0,11789318961.29,1869757854.61
+5,4,"square-v05-t04/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",499.264,4194816.0,11788745032.69,1853800794.77
+6,4,"square-v06-t04/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",126.208,4194304.0,11787018255.58,1690641639.2
+7,4,"square-v07-t04/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",96.224,4194304.0,11783172597.27,1676998461.92
+8,4,square-v08-t04/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),87.008,4194560.0,11780801765.35,1678288203.38
+9,4,"square-v09-t04/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",97.792,4239104.0,11785340314.14,1720958769.63
+0,4,"square-v00-t04/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3671.552,4227328.0,11789987449.45,1873098079.5
+1,4,"square-v01-t04/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2871.968,4219136.0,11790036657.79,1874095393.82
+2,4,"square-v02-t04/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1011.36,4303104.0,11789273849.07,1865255695.3
+3,4,"square-v03-t04/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",876.384,4194304.0,11789535180.93,1866981254.79
+5,5,"square-v05-t05/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",498.368,4260096.0,11789906254.01,1852492535.64
+6,5,"square-v06-t05/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",127.68,4194560.0,11785463659.15,1688302788.22
+7,5,"square-v07-t05/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",95.36,4194816.0,11787919463.09,1666841442.95
+8,5,square-v08-t05/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),87.52,4198656.0,11782084095.06,1680770109.69
+9,5,"square-v09-t05/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",96.96000000000001,4203264.0,11783498349.83,1718925330.03
+0,5,"square-v00-t05/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3671.648,4719360.0,11789958078.77,1873077702.44
+1,5,"square-v01-t05/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2865.408,4194304.0,11789958009.47,1874662351.75
+2,5,"square-v02-t05/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1010.784,4269056.0,11789407034.54,1867487514.64
+3,5,"square-v03-t05/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",879.072,4194560.0,11789596301.55,1865599177.31
+4,5,"square-v04-t05/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1045.568,4194560.0,11789679867.78,1871572198.08
+6,6,"square-v06-t06/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",129.568,4194304.0,11789577673.5,1697568072.36
+7,6,"square-v07-t06/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",95.968,4194560.0,11785261753.92,1669342905.97
+8,6,square-v08-t06/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),86.912,4194560.0,11787923416.79,1677564663.11
+9,6,"square-v09-t06/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",97.34400000000001,4194560.0,11781722550.95,1718708908.61
+0,6,"square-v00-t06/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3672.8,4551424.0,11790093661.51,1873165976.91
+1,6,"square-v01-t06/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2867.552,4336128.0,11790070415.46,1874102195.88
+2,6,"square-v02-t06/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1011.008,4194560.0,11789580300.06,1865619263.15
+3,6,"square-v03-t06/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",878.368,4194560.0,11789427665.85,1867098414.33
+4,6,"square-v04-t06/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1048.832,4198144.0,11789602147.91,1871229615.42
+5,6,"square-v05-t06/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",498.336,4194560.0,11788608489.05,1853319848.46
+7,7,"square-v07-t07/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",95.552,4194560.0,11782987273.95,1669085942.73
+8,7,square-v08-t07/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),87.776,4194816.0,11788552679.55,1677212449.87
+9,7,"square-v09-t07/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",96.64,4195328.0,11782781456.95,1723256415.56
+0,7,"square-v00-t07/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3672.192,4194560.0,11790093764.16,1873173161.97
+1,7,"square-v01-t07/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2869.728,4615424.0,11790051182.55,1874272753.38
+2,7,"square-v02-t07/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1010.048,4194816.0,11789633759.98,1866678118.27
+3,7,"square-v03-t07/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",877.152,4221184.0,11789427602.06,1867508139.98
+4,7,"square-v04-t07/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1046.112,4194560.0,11789422165.12,1872108340.22
+5,7,"square-v05-t07/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",496.672,4280064.0,11788931125.57,1856736437.73
+6,7,"square-v06-t07/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",131.68,4194048.0,11787120291.62,1705969015.8
+8,8,square-v08-t08/void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_nn_align8>(T1::Params),87.168,4194304.0,11782672540.38,1677576633.63
+9,8,"square-v09-t08/void <unnamed>::gemm_mma_llm_kernel<(int)64, (int)128, (int)3, (int)32>(const __half *, const __half *, __half *, int, int, int, float, float)",98.432,4255232.0,11786736020.81,1711318473.67
+0,8,"square-v00-t08/<unnamed>::gemm_base_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",3671.168,4193792.0,11789965482.38,1872849049.68
+1,8,"square-v01-t08/<unnamed>::gemm_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",2867.456,4280576.0,11789929470.58,1874235908.07
+2,8,"square-v02-t08/<unnamed>::gemm_smem_reg_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1010.6560000000001,4194816.0,11789380362.85,1866579231.71
+3,8,"square-v03-t08/<unnamed>::gemm_smem_reg_half2_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",876.384,4606208.0,11789535180.93,1868185635.52
+4,8,"square-v04-t08/<unnamed>::gemm_wmma_smem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",1044.032,4194304.0,11789860847.18,1870896677.5
+5,8,"square-v05-t08/<unnamed>::gemm_wmma_gmem_kernel(const __half *, const __half *, __half *, int, int, int, float, float)",498.752,4194304.0,11789041447.45,1854263241.05
+6,8,"square-v06-t08/void <unnamed>::gemm_wmma_pipeline_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",125.888,4194816.0,11786476868.33,1698962569.9
+7,8,"square-v07-t08/void <unnamed>::gemm_wmma_swizzle_kernel<(int)3>(const __half *, const __half *, __half *, int, int, int, float, float)",96.384,4194048.0,11784860557.77,1667003859.56

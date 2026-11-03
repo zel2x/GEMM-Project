@@ -1,0 +1,12 @@
+{"rtol":0.002,"atol":0.002,"nrms_limit":0.001,"fp64_reference_spots":64,"cases":[
+{"id":0,"kernel":"gemm_base_kernel","pass":true,"max_abs_error":0.00390815734863,"nrms":0.00020722987459,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":1,"kernel":"gemm_smem_kernel","pass":true,"max_abs_error":0.00390815734863,"nrms":0.00020722987459,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":2,"kernel":"gemm_smem_reg_kernel","pass":true,"max_abs_error":0.00390815734863,"nrms":0.00020722987459,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":3,"kernel":"gemm_smem_reg_half2_kernel","pass":true,"max_abs_error":0.00390815734863,"nrms":0.00020722987459,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":4,"kernel":"gemm_wmma_smem_kernel","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":5,"kernel":"gemm_wmma_gmem_kernel","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":6,"kernel":"gemm_wmma_pipeline_kernel<3>","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":7,"kernel":"gemm_wmma_swizzle_kernel<3>","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":8,"kernel":"cuBLAS (gemm_cublas)","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true},
+{"id":9,"kernel":"gemm_mma_llm_kernel<64, 128, 3, 32>","pass":true,"max_abs_error":0.00391387939453,"nrms":0.000207233172246,"tolerance_violations":0,"canaries_intact":true,"inputs_unchanged":true}
+],"passed":true}

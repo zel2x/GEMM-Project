@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-19",
+  "compiler": "nvcc -O3 -std=c++17 -lineinfo -arch=sm_120; -lcublas",
+  "metric": "gpu__time_duration.sum; collected with DRAM read bytes and SM/DRAM frequency counters to audit cold operands and clock behavior",
+  "scope": "sum every GPU kernel in each complete GEMM call, then median over calls; excludes inter-kernel gaps",
+  "warmups_per_variant": 10,
+  "samples_per_variant": 9,
+  "order": "rotate variants by trial index",
+  "cuda_graph": false,
+  "replay_mode": "application",
+  "ncu_cache_control": "none",
+  "cache_condition": "256 MiB pseudorandom buffer read through ld.global.ca on all SMs before each independent call, outside NVTX; no flushing between internal cuBLAS kernels",
+  "clock_control": "base",
+  "dtype": "FP16 A/B/C, FP32 accumulation",
+  "alpha": 1.0,
+  "beta": 0.0,
+  "input_seed": "1729+M+N+K; LCG fractional FP16 in [-0.5,0.5]",
+  "eviction_bytes": 268435456,
+  "source_sha256": {
+    "starter": "e614ec024a007cc3d3c5be6a301aede0f21651e5207a65ea36f35212b257b229",
+    "gemm_llm_optimized": "5ea47cb766e1cb5cd71e51418a78fbb7b3cfccca7a4217c29c50ee0a624b0872"
+  },
+  "validation": "54 alpha/beta cases across six suites; full pedantic FP32 GEMM reference, 64 CPU FP64 spots/suite, output and A/B guards; see validate-*.log",
+  "clock_audit": {
+    "qkv": {
+      "dram_ghz_min": 8.923944,
+      "dram_ghz_max": 11.79013,
+      "sm_ghz_min": 1.583778,
+      "sm_ghz_max": 1.874565
+    },
+    "square1024": {
+      "dram_ghz_min": 8.982076,
+      "dram_ghz_max": 11.790132,
+      "sm_ghz_min": 1.675549,
+      "sm_ghz_max": 1.874882
+    },
+    "opt_m1": {
+      "dram_ghz_min": 8.949772,
+      "dram_ghz_max": 9.002278,
+      "sm_ghz_min": 1.785196,
+      "sm_ghz_max": 1.862827
+    },
+    "opt_m32": {
+      "dram_ghz_min": 8.986603,
+      "dram_ghz_max": 8.995162,
+      "sm_ghz_min": 1.755257,
+      "sm_ghz_max": 1.811966
+    },
+    "opt_prefill": {
+      "dram_ghz_min": 8.9927,
+      "dram_ghz_max": 8.993064,
+      "sm_ghz_min": 1.860061,
+      "sm_ghz_max": 1.867657
+    },
+    "opt_down": {
+      "dram_ghz_min": 8.992879,
+      "dram_ghz_max": 11.790127,
+      "sm_ghz_min": 1.860939,
+      "sm_ghz_max": 1.870874
+    }
+  },
+  "clock_limit": "Base requested; occasional ~11.79 GHz DRAM state in some calls. Not perfectly fixed-clock. See raw frequencies and IQRs.",
+  "bundled_validation": "6/6 for each source"
+}
