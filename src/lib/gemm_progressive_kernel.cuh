@@ -3,7 +3,6 @@
 
 // Progressive GEMM implementations: start with scalar global-memory loads,
 // add shared-memory reuse and wider loads, then use warp-level Tensor Cores.
-// This is a teaching order, not a claim that each kernel is always faster.
 //
 // Global-memory scalar baseline:
 //   gemm_base_kernel          - one output/thread; direct scalar FP16 loads.
@@ -21,9 +20,6 @@
 //   gemm_wmma_pipeline_kernel - four warps/64x64 tile with cp.async staging.
 //   gemm_wmma_swizzle_kernel  - XOR-swizzled shared layout and explicit
 //                               ldmatrix/mma.sync; same 64x64 tile family.
-//
-// Helpers and kernels in both GEMM headers share one translation-unit-private
-// namespace. The LLM header supplies common constants and async/MMA helpers.
 
 // Basic GEMM: C[M,N] = alpha * A[M,K] * B[K,N] + beta * C_initial[M,N].
 // All matrices are row-major FP16; each dot product accumulates in FP32.
@@ -164,8 +160,7 @@ __device__ __forceinline__ void store_gemm_half(half* C, int M, int N, int row, 
 
 // Comparison to gemm_smem_reg_kernel: same 32x32 FP32 shared tiles and 2x2
 // outputs/thread. Launch dim3(tile_side/2, tile_side/2) = (16,16).
-// Pack each adjacent pair of global halfs into one 32-bit half2 load. Keep the
-// two rows separate: row-major A/B do not make a whole 2x2 patch contiguous.
+// Pack each adjacent pair of global halfs into one 32-bit half2 load.
 __global__ void gemm_smem_reg_half2_kernel(const half* A, const half* B, half* C,
                                          int M, int N, int K, float alpha, float beta) {
     const int local_row = threadIdx.y * 2;
@@ -223,8 +218,7 @@ constexpr int F4_THREADS_X = F4_TILE_N / F4_HALFS;
 constexpr int F4_THREADS_Y = F4_TILE_M;
 
 // Copy eight FP16 bit patterns, NOT four numerically converted FP32 values.
-// dst must be 16B aligned. Check the actual source address: an aligned allocation
-// does not imply aligned rows when the leading dimension is not a multiple of 8.
+// dst must be 16B aligned.
 __device__ __forceinline__ void load_half8(const half* src, int rows, int cols,
                                          int row, int col, half* dst) {
     if (row < rows && col < cols) {
@@ -282,7 +276,7 @@ __global__ void gemm_f4_kernel(const half* A, const half* B, half* C, int M, int
         load_half8_f32(B, K, N, k_base + ty, col, &sB[ty][local_col]);
         __syncthreads();  // All rows must be ready before any thread consumes them.
 
-        // Stage 2: thread (tx,ty) computes C[row, tile_col + 8*tx + i], i=0..7.
+        // Stage 2: thread (tx,ty) computes C[row, tile_col + 8 * tx + i], i=0..7.
         // Read FP32 shared values directly; reuse one A value for eight outputs.
         #pragma unroll 4
         for (int k = 0; k < F4_TILE_K; ++k) {
@@ -322,9 +316,6 @@ __global__ void gemm_f4_kernel(const half* A, const half* B, half* C, int M, int
 }
 
 // 3. Warp-level Tensor Cores: WMMA first, then asynchronous/swizzled staging.
-// Compared with the FP32 FMA family, use FP16 matrix instructions with FP32
-// accumulators. Shared staging supplies complete 16x16 tiles at input edges.
-// Boundary/misalignment fallback: stage inputs in shared memory to mask tails.
 __global__ void gemm_wmma_smem_kernel(const half* A, const half* B, half* C, int M, int N, int K,
                                       float alpha, float beta) {
     const int lane = threadIdx.x;
@@ -341,8 +332,6 @@ __global__ void gemm_wmma_smem_kernel(const half* A, const half* B, half* C, int
     wmma::fill_fragment(acc_frag, 0.0f);
 
     for (int k_base = 0; k_base < K; k_base += TILE) {
-        // WMMA has no per-element bounds mask. This fallback also repairs
-        // incompatible global strides and unaligned input base pointers.
         __shared__ __align__(32) half sA[TILE][TILE];
         __shared__ __align__(32) half sB[TILE][TILE];
         for (int element = lane; element < TILE * TILE; element += WARP_SIZE) {
@@ -377,10 +366,7 @@ __global__ void gemm_wmma_smem_kernel(const half* A, const half* B, half* C, int
     }
 }
 
-// Alternative to shared input staging, not a boundary-safe replacement for it.
-// Comparison with gemm_wmma.cu: same one-warp/16x16 tile and FP32 epilogue,
-// but full, aligned input tiles load directly from global memory into WMMA
-// register fragments. Arbitrary shapes/pointer offsets use a staged fallback.
+// Direct gmem to wmma loads: no shared memory, no staging, no padding. Each warp computes one 16x16 tile.
 __global__ void gemm_wmma_gmem_kernel(const half* A, const half* B, half* C, int M, int N, int K,
                                       float alpha, float beta) {
     int lane = threadIdx.x % WARP_SIZE;
@@ -646,8 +632,7 @@ __global__ void gemm_wmma_pipeline_kernel(const half* A, const half* B, half* C,
 }
 
 // Alternative to the padded WMMA pipeline: XOR-swizzle shared addresses and
-// explicitly load register fragments with ldmatrix before mma.sync. Despite
-// the wmma name, this kernel uses explicit PTX MMA rather than the WMMA API.
+// explicitly load register fragments with ldmatrix before mma.sync.
 constexpr int MMA_STAGES = 3;
 
 // Same eligible shapes/alignment as the WMMA pipeline: 64x64 output, BK=32,
@@ -693,7 +678,7 @@ __global__ void gemm_wmma_swizzle_kernel(const half* A, const half* B, half* C,
     };
 
     unsigned a_frag[2][2][4], b_frag[2][2][4];  // [register buffer][16x16 tile][packed register]
-    float acc[2][4][4] = {};                  // two M tiles x four N=8 tiles x four outputs/lane
+    float acc[2][4][4] = {};                    // two M tiles x four N=8 tiles x four outputs/lane
     auto load_fragments = [&](int buffer, int slot, int group) {
         #pragma unroll
         for (int i = 0; i < 2; ++i) {

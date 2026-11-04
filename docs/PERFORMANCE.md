@@ -69,8 +69,6 @@ the speedup comes from no split k (9us) and more efficient memory staging (4 war
 
 ## 3. Progressive kernel comparisons
 
-Rows follow the source's teaching order: scalar global loads, shared-memory FP32 FMA, WMMA, then asynchronous/swizzled Tensor Core staging. A later row is not necessarily faster. Every implementation is named explicitly; cuBLAS is called through `gemm_cublas`.
-
 **Executed M** is the physical number of rows passed to the implementation. Padded rows perform extra work and are diagnostic controls, not equal-work speedup claims. Time/cuBLAS uses the cuBLAS control at the requested M; the M=32 table also retains a cuBLAS M=64 padding control. Grid and block dimensions are (x,y), with z=1.
 
 ### M,N,K = 8,6144,4096
@@ -128,3 +126,38 @@ Rows follow the source's teaching order: scalar global loads, shared-memory FP32
 | cuBLAS (`gemm_cublas`) | 1024 | library | library | 87.168 | 1.000 |
 
 ![GPU execution times for M,N,K = 1024,1024,1024](figures/progressive-square.svg)
+
+## 4. TensorRT-LLM inference
+
+### Setup and method
+
+The recorded experiment uses `meta-llama/Llama-3.2-1B-Instruct` in FP16 on an RTX PRO 1000 Blackwell Laptop GPU (SM120). TP=1 and PP=1; FlashInfer attention, paged KV cache, chunked prefill, overlap scheduling and decode CUDA graphs are enabled. Graph buckets are 1/2/4/8/16 with padding. Both variants retain the same 24,576-token FP16 KV capacity. Quantization, prefix reuse and speculative decoding are disabled.
+
+The official `trtllm-bench` measures runtime inference. `trtllm-serve` and its release-matched benchmark client measure streaming HTTP over loopback. Each ordinary run excludes 32 warmup requests and measures 200 completed requests. Compilation, weight packing, autotuning and graph capture precede measurement; profiler captures are separate from timing runs.
+
+The completed experiment includes 128/512 input/output tokens at concurrency 1/2/4/8/16; 1024/256, 1024/1 and an equal short/long mix at concurrency 8; QKV-only ablations; synchronized eight-sequence controls; and mixed open-loop serving at 50/80/100/120% of stock calibration throughput. The campaign contains 232 runs, including two superseded mixed-serving runs; 230 runs form the selected analysis set.
+
+### Primary decode results
+
+128 input tokens, 512 output tokens, concurrency eight. **Custom** means all eligible dense projections using `gemm_mma_llm_kernel<16, 128, 3>` for physical M=8. The single-row path uses `gemm_gemv_kernel`. Stock M8 projections in the diagnostic traces use `cutlass_80_wmma_tensorop_f16_s161616gemm_f16_16x16_128x1_tn_align8`.
+
+| Interface | Metric | Stock | Custom | Change | Paired 95% CI |
+|---|---|---:|---:|---:|---|
+| Runtime | Output tokens/s | 816.318 | 813.881 | -0.30% | [-0.86%, +0.25%] |
+| Runtime | TPOT, ms | 9.629 | 9.656 | +0.27% | [-0.28%, +0.83%] |
+| HTTP serving | Output tokens/s | 785.568 | 772.967 | -1.61% | [-2.28%, -0.75%] |
+| HTTP serving | TPOT, ms | 9.998 | 10.164 | +1.66% | [+0.83%, +2.35%] |
+
+
+**Conclusion:** runtime inference is effectively unchanged;.
+
+### Replacement coverage and interpretation
+
+In the stock trace, targeted GEMMs occupy **38.67% of the selected elapsed window** and **92.62% of GPU-kernel execution time**.
+The replacement GEMM is observed to replace **98.1~99.6% of target GEMM kernel calls** and **82.1~98.6% of GEMM kernel time**.
+
+### Integration example
+
+The [sample code](../samples/trtllm_gemm/) shows how the measured integration works: load a CUDA operator in each model worker, pack weights once from `W[N,K]` into contiguous `B[K,N]`, intercept eligible unquantized linear calls, and launch the existing GEMV/MMA kernels on PyTorch's current CUDA stream. Unsupported inputs call the original TRT-LLM method. The standalone launcher and kernel sources are unchanged.
+
+`adapter.py` shows packing and method interception; `binding.cpp` connects tensors to CUDA; `launcher.cu` supplies an explicit stream to the existing kernels; `__init__.py` loads the sample through `--custom_module_dirs`. The sample expects a prebuilt extension specified by `GEMM_SAMPLE_LIBRARY`. Select `stock` (default), `qkv_only` or `all_dense` with `GEMM_SAMPLE_MODE`.

@@ -321,12 +321,9 @@ __global__ void gemm_mma_llm_kernel(const half* A, const half* B, half* C, int M
         // Workload (M,N,K)	    GroupRows	Ungrouped (1)	Grouped	Result
         // QKV (2048,6144,4096)	4	        5.953 ms	    3.408 ms (42.75% less time)
         //
-        // Note: increasing groups has no futher gain, other shapes show no
-        // meaningful gain:
-        //   e.g Down projection (2048,4096,14336)
-        //       kernel time 7.781 ms (no grouping)	--> 7.808 ms (4 groups)
+        // Note: increasing groups beyond 4 has no futher gain on the tested sm120 GPU.
         //
-        // When it works, stats show better cache reuse:
+        // Stats show better cache reuse:
         // For QKV, GroupRows=4 changes:
         // - DRAM reads: 1549.7 → 64.0 MiB, a 95.9% reduction.
         // - L2 sector hit rate: 32.7% → 96.2%.

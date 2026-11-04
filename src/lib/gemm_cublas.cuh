@@ -33,10 +33,10 @@ __global__ void gemm_cublas_scale_c(half* C, size_t count, float beta) {
 }
 }  // namespace
 
-// NVIDIA library version: host function, NOT a <<<blocks,threads>>> kernel.
+// NVIDIA library version:
 // Link starter.cu with -lcublas. Uses the default stream and a cached handle.
 extern "C" void gemm_cublas(const half* A, const half* B, half* C, int M, int N, int K,
-                            float alpha, float beta) {
+                            float alpha, float beta, bool column_major = false) {
     if (M <= 0 || N <= 0) return;
     if (K == 0) {
         const size_t count = static_cast<size_t>(M) * N;
@@ -44,12 +44,20 @@ extern "C" void gemm_cublas(const half* A, const half* B, half* C, int M, int N,
         return;
     }
     static thread_local CublasContext context;  // One fixed GPU per host thread.
-    // Column-major C^T = B^T*A^T implements row-major C = A*B without copies.
-    check_cublas(cublasGemmEx(context.handle, CUBLAS_OP_N, CUBLAS_OP_N,
-                            N, M, K, &alpha,
-                            B, CUDA_R_16F, N,
-                            A, CUDA_R_16F, K,
-                            &beta, C, CUDA_R_16F, N,
-                            CUBLAS_COMPUTE_32F, CUBLAS_GEMM_DEFAULT));
+    if (column_major) {
+        check_cublas(cublasGemmEx(context.handle, CUBLAS_OP_N, CUBLAS_OP_N,
+                                  M, N, K, &alpha,
+                                  A, CUDA_R_16F, M,
+                                  B, CUDA_R_16F, K,
+                                  &beta, C, CUDA_R_16F, M,
+                                  CUBLAS_COMPUTE_32F, CUBLAS_GEMM_DEFAULT));
+    } else {
+        // Column-major C^T = B^T*A^T implements row-major C = A*B without copies.
+        check_cublas(cublasGemmEx(context.handle, CUBLAS_OP_N, CUBLAS_OP_N,
+                                  N, M, K, &alpha,
+                                  B, CUDA_R_16F, N,
+                                  A, CUDA_R_16F, K,
+                                  &beta, C, CUDA_R_16F, N,
+                                  CUBLAS_COMPUTE_32F, CUBLAS_GEMM_DEFAULT));
+    }
 }
-
